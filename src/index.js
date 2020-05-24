@@ -1,5 +1,4 @@
 const http = require('http');
-const cors = require('cors');
 const express = require('express');
 const socketIo = require('socket.io');
 const OBSWebSocket = require('obs-websocket-js');
@@ -12,13 +11,10 @@ const server = http.createServer(app);
 const io = socketIo(server);
 
 app.use(express.static('./public'));
-app.use(cors())
-
 
 slave = {}
 master = {}
 
-//Sockets
 io.on('connection', (socket) => {
     socket.on('audioInput', (body) => {
         setValues(body)

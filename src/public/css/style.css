@@ -1,0 +1,21 @@
+body{
+    background-color: white;
+}
+
+.iframes{
+    height: 95vh;
+}
+#selectDevice{
+    width: 100%;
+}
+
+.select{
+    text-align: center;
+    width: 25%;
+    margin: 0 auto;
+}
+.container{
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}

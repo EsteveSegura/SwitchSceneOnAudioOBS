@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>MASTER</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Master</h1>
+        <div id="panel">
+            <input type="text" placeholder="Escena" id="scene">
+            <input type="hidden" value="master" id="actualId">
+            <div class="select" onchange="getNewOption()">
+                <select id="selectDevice"></select><br>
+                <button onclick="startStream()">Start</button>
+            </div>
+        </div>
+
+        <canvas id="canvas" width="150" height="300"></canvas>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+        <script async src="js/myOwnCode.js"></script>
+
+</body>
+
+</html>

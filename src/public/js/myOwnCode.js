@@ -6,10 +6,19 @@ navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia
 let devicesAvailable = []
 let select = document.getElementById("selectDevice");
 let btnPick = document.getElementById("pick");
-let panel = document.getElementById("panel");
+let selectPanel = document.getElementById("removable-element");
 let typeSelected = document.getElementById("actualId");
 let sceneSelected = document.getElementById("scene");
+let sliderValue = document.getElementById("range-value");
+let slider = document.getElementById("RangeDb");
+let titleSlave = document.getElementById("slave-name");
 let actualOpt = ""
+let dbLimit = -25
+
+console.log(titleSlave)
+if(titleSlave != null){
+    titleSlave.innerHTML = `Slave-${getParameterByName("slave")}`;
+}
 
 navigator.mediaDevices.enumerateDevices().then(function (devices) {
     devices.forEach(function (device) {
@@ -35,11 +44,27 @@ function getNewOption() {
     actualOpt = select.value
 }
 
+function getVol(val){
+    sliderValue.innerHTML = val;
+    dbLimit = val
+    console.log(val)
+}
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
 function startStream() {
     if (navigator.getUserMedia) {
         navigator.getUserMedia({ audio: { deviceId: { exact: actualOpt } } }, function (stream) {
             vuMeter(stream)
-            panel.remove()
+            selectPanel.remove()
         }, function (err) {
             console.warn(err)
         });
@@ -74,7 +99,7 @@ function vuMeter(streamdata) {
         let average = values / length;
         let actualVolume = Math.round(average - 40)
         console.log(actualVolume);
-        sendSocketData(actualVolume, typeSelected.value,sceneSelected.value)
+        sendSocketData(actualVolume, typeSelected.value, sceneSelected.value)
         canvasContext.clearRect(0, 0, 150, 300);
         canvasContext.fillStyle = '#BadA55';
         canvasContext.fillRect(0, 300 - average, 150, 300);
@@ -86,6 +111,7 @@ function vuMeter(streamdata) {
 }
 //
 function sendSocketData(volume, id, sceneTyped) {
-    let objData = { 'volume': volume, 'id': id, 'scene':sceneTyped }
+    
+    let objData = { 'volume': volume, 'id': getParameterByName("slave") != null ? `${id}-${getParameterByName("slave")}` : `${id}`, 'scene': sceneTyped, 'limit': dbLimit }
     socket.emit('audioInput', (objData));
 }

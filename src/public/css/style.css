@@ -3,10 +3,16 @@ body{
 }
 
 .iframes{
+    text-align: center;
     height: 95vh;
 }
 #selectDevice{
     width: 100%;
+}
+
+#RangeDb{
+    text-align: center;
+    width: 85%;
 }
 
 .select{

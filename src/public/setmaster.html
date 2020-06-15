@@ -14,7 +14,9 @@
         <div id="panel">
             <input type="text" placeholder="Escena" id="scene">
             <input type="hidden" value="master" id="actualId">
-            <div class="select" onchange="getNewOption()">
+            <input type="range" min="-40" max="25" value="-25" class="slider" id="RangeDb" oninput="getVol(this.value)">
+            <div id="range-value">-25</div>
+            <div class="select" id="removable-element"onchange="getNewOption()">
                 <select id="selectDevice"></select><br>
                 <button onclick="startStream()">Start</button>
             </div>
@@ -23,9 +25,9 @@
         <canvas id="canvas" width="150" height="300"></canvas>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-        <script async src="js/myOwnCode.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script async src="js/myOwnCode.js"></script>
 
 </body>
 

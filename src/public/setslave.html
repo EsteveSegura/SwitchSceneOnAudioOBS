@@ -10,11 +10,13 @@
 
 <body>
     <div class="container">
-        <h1>Slave</h1>
+        <h1 id="slave-name">Slave</h1>
         <div id="panel">
-            <input type="text" placeholder="Escena" id="scene">>
+            <input type="text" placeholder="Escena" id="scene">
             <input type="hidden" value="slave" id="actualId">
-            <div class="select" onchange="getNewOption()">
+            <input type="range" min="-40" max="25" value="-25" class="slider" id="RangeDb" oninput="getVol(this.value)">
+            <div id="range-value">-25</div>
+            <div class="select" id="removable-element"onchange="getNewOption()">
                 <select id="selectDevice"></select><br>
                 <button onclick="startStream()">Start</button>
             </div>

@@ -1,5 +1,5 @@
 <p align=center>
-  <img width=300 src="https://i.imgur.com/bvRuZzu.png"/>
+  <img width="500" src="https://i.imgur.com/bvRuZzu.png"/>
   <br>
   <span><strong>OBS Audio Switcher</strong> It is a tool that works together with OBS to add the functionality of changing scenes using audio levels. </span><br />
 <img src="https://img.shields.io/badge/NodeJS-10.13.0-green"> 
@@ -39,6 +39,7 @@ Before running the application we need to **open our OBS** with the <a href="htt
 <div align=center>
   <img width=300 src="https://i.imgur.com/HhMDG0l.png"/>
 </div>
+
 <span style="color:red; font-weight: bold;">IT IS VERY IMPORTANT </span>to have OBS open, with port **4444** configured and the password must be set to **secret** in our web socket server options, before running this software 
 
 ## Usage

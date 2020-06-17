@@ -23,8 +23,8 @@ master = {}
 
 io.on('connection', (socket) => {
     socket.on('audioInput', (body) => {
-        setValues(body)
-        console.log(body)
+        setValues({ 'volume': parseInt(body.volume), 'id': body.id, 'scene': body.scene, 'limit': parseInt(body.limit)})
+        console.log({ 'volume': parseInt(body.volume), 'id': body.id, 'scene': body.scene, 'limit': parseInt(body.limit)})
 
     });
 });
@@ -51,30 +51,30 @@ function setValues(val) {
 }
 
 function changeScene() {
-    if(master.volume > master.limit){
+    if (master.volume > parseInt(master.limit)) {
         obs.send('SetCurrentScene', { 'scene-name': master.scene });
-    }else{
-        if (master.volume > master.limit) {
+    } else {
+        if (master.volume > parseInt(master.limit)) {
             obs.send('SetCurrentScene', { 'scene-name': master.scene });
         }
-    
-        if (slave1.volume > slave1.limit) {
+
+        if (slave1.volume > parseInt(slave1.limit)) {
             obs.send('SetCurrentScene', { 'scene-name': slave1.scene });
         }
 
-        if (slave2.volume > slave2.limit) {
+        if (slave2.volume > parseInt(slave2.limit)) {
             obs.send('SetCurrentScene', { 'scene-name': slave2.scene });
         }
 
-        if (slave3.volume > slave3.limit) {
+        if (slave3.volume > parseInt(slave3.limit)) {
             obs.send('SetCurrentScene', { 'scene-name': slave3.scene });
         }
 
-        if (slave4.volume > slave4.limit) {
+        if (slave4.volume > parseInt(slave4.limit)) {
             obs.send('SetCurrentScene', { 'scene-name': slave4.scene });
         }
 
-        if (slave5.volume > slave5.limit) {
+        if (slave5.volume > parseInt(slave5.limit)) {
             obs.send('SetCurrentScene', { 'scene-name': slave5.scene });
         }
     }

@@ -112,6 +112,6 @@ function vuMeter(streamdata) {
 //
 function sendSocketData(volume, id, sceneTyped) {
     
-    let objData = { 'volume': volume, 'id': getParameterByName("slave") != null ? `${id}-${getParameterByName("slave")}` : `${id}`, 'scene': sceneTyped, 'limit': dbLimit }
+    let objData = { 'volume': volume, 'id': getParameterByName("slave") != null ? `${id}-${getParameterByName("slave")}` : `${id}`, 'scene': sceneTyped, 'limit': parseInt(dbLimit) }
     socket.emit('audioInput', (objData));
 }
